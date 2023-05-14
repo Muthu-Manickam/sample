@@ -11,8 +11,8 @@
     <form id="paymentForm">
         <input type="text" id="amount" placeholder="Enter amount" required><br><br>
         <input type="text" id="orderId" placeholder="Enter order ID" required><br><br>
-        <input type="text" id="customerName" placeholder="Enter customer name" required><br><br>
-        <input type="email" id="customerEmail" placeholder="Enter customer email" required><br><br>
+        <input type="text" id="customerName" placeholder="Enter type" required><br><br>
+        <input type="text" id="customerEmail" placeholder="Enter request id" required><br><br>
         <input type="submit" value="Pay Now">
     </form>
 
@@ -24,8 +24,8 @@
             // Fetch form values
             var amount = $("#amount").val();
             var orderId = $("#orderId").val();
-            var customerName = $("#customerName").val();
-            var customerEmail = $("#customerEmail").val();
+            var type = $("#customerName").val();
+            var requestId = $("#customerEmail").val();
 
             // Create payment request object
             var merchantInfo = {
@@ -43,8 +43,9 @@
             };
 
             // Set the order ID in the merchantInfo object
-            // merchantInfo.moid = orderId;
-
+            merchantInfo.moid = orderId;
+            merchantInfo.type = type;
+            merchantInfo.request_id = requestId;
             // Initialize payment using Gokwik SDK
             gokwikSdk.initPayment(merchantInfo);
         });
