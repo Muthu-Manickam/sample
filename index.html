@@ -9,7 +9,7 @@
     <h1>Gokwik Payment Integration</h1>
 
     <form id="paymentForm">
-        <input type="text" id="amount" placeholder="Enter amount" required><br><br>
+        <input type="text" id="amount" placeholder="Enter gokwik order id" required><br><br>
         <input type="text" id="orderId" placeholder="Enter order ID" required><br><br>
         <input type="text" id="customerName" placeholder="Enter type" required><br><br>
         <input type="text" id="customerEmail" placeholder="Enter request id" required><br><br>
@@ -22,7 +22,7 @@
             event.preventDefault();
 
             // Fetch form values
-            var amount = $("#amount").val();
+            var gOrderId = $("#amount").val();
             var orderId = $("#orderId").val();
             var type = $("#customerName").val();
             var requestId = $("#customerEmail").val();
@@ -46,6 +46,7 @@
             merchantInfo.moid = orderId;
             merchantInfo.type = type;
             merchantInfo.request_id = requestId;
+            merchantInfo.gokwik_oid = gOrderId;
             // Initialize payment using Gokwik SDK
             gokwikSdk.initPayment(merchantInfo);
         });
