@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gokwik Payment Integration</title>
+    <script src="https://checkout.gokwik.co/integration.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Gokwik Payment Integration</h1>
+
+    <form id="paymentForm">
+        <input type="text" id="amount" placeholder="Enter amount" required><br><br>
+        <input type="text" id="orderId" placeholder="Enter order ID" required><br><br>
+        <input type="text" id="customerName" placeholder="Enter customer name" required><br><br>
+        <input type="email" id="customerEmail" placeholder="Enter customer email" required><br><br>
+        <input type="submit" value="Pay Now">
+    </form>
+
+    <script>
+        // Handle form submission
+        $("#paymentForm").submit(function (event) {
+            event.preventDefault();
+
+            // Fetch form values
+            var amount = $("#amount").val();
+            var orderId = $("#orderId").val();
+            var customerName = $("#customerName").val();
+            var customerEmail = $("#customerEmail").val();
+
+            // Create payment request object
+            var merchantInfo = {
+                order_type: "upi",
+                mid: "19g6il9woucxd",
+                moid: "gyug78879sd0",
+                environment: "sandbox",
+                request_id: "13d69e1c-fcc2-467c-b55f-78f4cdd783ce",
+                gokwik_oid: "KWIKMXPPZLEA8860704",
+                css: {
+                    primaryColor: "#f08080",
+                    secondaryColor: "#ffa07a"
+                },
+                showModal: true,
+            };
+
+            // Set the order ID in the merchantInfo object
+            // merchantInfo.moid = orderId;
+
+            // Initialize payment using Gokwik SDK
+            gokwikSdk.initPayment(merchantInfo);
+        });
+    </script>
+</body>
+</html>
