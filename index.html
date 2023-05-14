@@ -42,11 +42,11 @@
                 showModal: true,
             };
 
-//             // Set the order ID in the merchantInfo object
-//             merchantInfo.moid = orderId;
-//             merchantInfo.type = type;
-//             merchantInfo.request_id = requestId;
-//             merchantInfo.gokwik_oid = gOrderId;
+            // Set the order ID in the merchantInfo object
+            merchantInfo.moid = orderId;
+            merchantInfo.type = type;
+            merchantInfo.request_id = requestId;
+            merchantInfo.gokwik_oid = gOrderId;
             // Initialize payment using Gokwik SDK
             gokwikSdk.initPayment(merchantInfo);
         });
