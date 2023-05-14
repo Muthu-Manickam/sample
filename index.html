@@ -29,12 +29,12 @@
 
             // Create payment request object
             var merchantInfo = {
-                order_type: "cod",
+                order_type: "upi",
                 mid: "19g6il9woucxd",
-                moid: "gyug78879sd0",
+                moid: "gyug78879sdd",
                 environment: "sandbox",
-                request_id: "13d69e1c-fcc2-467c-b55f-78f4cdd783ce",
-                gokwik_oid: "KWIKMXPPZLEA8860704",
+                request_id: "be948b48-701b-4c68-86c9-3ef1b91eb317",
+                gokwik_oid: "KWIKR8ARV7EA1700566",
                 css: {
                     primaryColor: "#f08080",
                     secondaryColor: "#ffa07a"
@@ -42,11 +42,11 @@
                 showModal: true,
             };
 
-            // Set the order ID in the merchantInfo object
-            merchantInfo.moid = orderId;
-            merchantInfo.type = type;
-            merchantInfo.request_id = requestId;
-            merchantInfo.gokwik_oid = gOrderId;
+//             // Set the order ID in the merchantInfo object
+//             merchantInfo.moid = orderId;
+//             merchantInfo.type = type;
+//             merchantInfo.request_id = requestId;
+//             merchantInfo.gokwik_oid = gOrderId;
             // Initialize payment using Gokwik SDK
             gokwikSdk.initPayment(merchantInfo);
         });
