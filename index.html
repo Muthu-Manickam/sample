@@ -59,30 +59,30 @@
             gokwikSdk.close(); // for closing dialog
             });
             
-            gokwikSdk.on(‘failure’,(data)=>{
-            console.log(‘order failed’, JSON.stringify(data))
-                /* sample response object
-                1.  {
-                        type: ”ORDER_CANCELLED”
-                        gokwik_oid: ‘111’,
-                        order_type: "upi"
-                    }
-                2.  {
-                        type: ”WRONG_ORDER_OBJECT”
-                        missingParams
-                    }
-                */
+//             gokwikSdk.on(‘failure’,(data)=>{
+//             console.log(‘order failed’, JSON.stringify(data))
+//                 /* sample response object
+//                 1.  {
+//                         type: ”ORDER_CANCELLED”
+//                         gokwik_oid: ‘111’,
+//                         order_type: "upi"
+//                     }
+//                 2.  {
+//                         type: ”WRONG_ORDER_OBJECT”
+//                         missingParams
+//                     }
+//                 */
 
-                //check can be added like
-                if (data.type === “WRONG_ORDER_OBJECT”) {
-                    // handler
-                }
+//                 //check can be added like
+//                 if (data.type === “WRONG_ORDER_OBJECT”) {
+//                     // handler
+//                 }
 
-                if (data.type === “ORDER_CANCELLED”) {
-                    // handler
-                }
+//                 if (data.type === “ORDER_CANCELLED”) {
+//                     // handler
+//                 }
 
-            })
+//             })
         });
     </script>
 </body>
