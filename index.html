@@ -53,11 +53,11 @@
             // Initialize payment using Gokwik SDK
             gokwikSdk.initPayment(merchantInfo);
             
-            gokwikSdk.on('success',(data)=>{
-            //Check order status from your backend if it is paid then navigate to thank you page. In case of status is not paid then you should call payment verify API from your backend.
-            console.log('order success',JSON.stringify(data))
-            gokwikSdk.close(); // for closing dialog
-            });
+//             gokwikSdk.on('success',(data)=>{
+//             //Check order status from your backend if it is paid then navigate to thank you page. In case of status is not paid then you should call payment verify API from your backend.
+//             console.log('order success',JSON.stringify(data))
+//             gokwikSdk.close(); // for closing dialog
+//             });
             
 //             gokwikSdk.on(‘failure’,(data)=>{
 //             console.log(‘order failed’, JSON.stringify(data))
