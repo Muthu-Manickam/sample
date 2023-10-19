@@ -1,89 +1,17 @@
-<!DOCTYPE html>
-<html>
 <head>
-    <title>Gokwik Payment Integration</title>
-    <script src="https://checkout.gokwik.co/integration.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-</head>
-<body>
-    <h1>Gokwik Payment Integration</h1>
-
-    <form id="paymentForm">
-        <input type="text" id="mid" placeholder="Enter mid id" required><br><br>
-        <input type="text" id="moid" placeholder="Enter moid" required><br><br>
-        <input type="text" id="amount" placeholder="Enter gokwik order id" required><br><br>
-        <input type="text" id="customerName" placeholder="Enter type" required><br><br>
-        <input type="text" id="customerEmail" placeholder="Enter request id" required><br><br>
-        <input type="submit" value="Pay Now">
-    </form>
-
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LfstbIoAAAAAGFQizD8uq_tn2_sCZ0kIympXceV" async defer></script>
+    ...
+    </head>
+    
     <script>
-        // Handle form submission
-        $("#paymentForm").submit(function (event) {
-            event.preventDefault();
-
-            // Fetch form values
-            var mid = $("#mid").val();
-            var gOrderId = $("#amount").val();
-            var moid = $("#moid").val();
-            var type = $("#customerName").val();
-            var requestId = $("#customerEmail").val();
-
-            // Create payment request object
-            var merchantInfo = {
-                order_type: "upi",
-                mid: "19g6ilfv5of59",
-                moid: "gyug78879sdd",
-                environment: "sandbox",
-                request_id: "be948b48-701b-4c68-86c9-3ef1b91eb317",
-                gokwik_oid: "KWIKR8ARV7EA1700566",
-                css: {
-                    primaryColor: "#f08080",
-                    secondaryColor: "#ffa07a"
-                },
-                showModal: true,
-            };
-
-            // Set the order ID in the merchantInfo object
-            merchantInfo.mid = mid;
-            merchantInfo.moid = moid;
-            merchantInfo.order_type = type;
-            merchantInfo.request_id = requestId;
-            merchantInfo.gokwik_oid = gOrderId;
-            // Initialize payment using Gokwik SDK
-            gokwikSdk.initPayment(merchantInfo);
-            
-//             gokwikSdk.on('success',(data)=>{
-//             //Check order status from your backend if it is paid then navigate to thank you page. In case of status is not paid then you should call payment verify API from your backend.
-//             console.log('order success',JSON.stringify(data))
-//             gokwikSdk.close(); // for closing dialog
-//             });
-            
-//             gokwikSdk.on(‘failure’,(data)=>{
-//             console.log(‘order failed’, JSON.stringify(data))
-//                 /* sample response object
-//                 1.  {
-//                         type: ”ORDER_CANCELLED”
-//                         gokwik_oid: ‘111’,
-//                         order_type: "upi"
-//                     }
-//                 2.  {
-//                         type: ”WRONG_ORDER_OBJECT”
-//                         missingParams
-//                     }
-//                 */
-
-//                 //check can be added like
-//                 if (data.type === “WRONG_ORDER_OBJECT”) {
-//                     // handler
-//                 }
-
-//                 if (data.type === “ORDER_CANCELLED”) {
-//                     // handler
-//                 }
-
-//             })
-        });
+    function onClick(e) {
+      e.preventDefault();
+      grecaptcha.enterprise.ready(async () => {
+        const token = await grecaptcha.enterprise.execute('6LfstbIoAAAAAGFQizD8uq_tn2_sCZ0kIympXceV', {action: 'LOGIN'});
+        // IMPORTANT: The 'token' that results from execute is an encrypted response sent by
+        // reCAPTCHA Enterprise to the end user's browser.
+        // This token must be validated by creating an assessment.
+        // See https://cloud.google.com/recaptcha-enterprise/docs/create-assessment
+      });
+    }
     </script>
-</body>
-</html>
